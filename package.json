@@ -23,11 +23,13 @@
   },
   "homepage": "https://github.com/alexanderbry/Server-HercaGroupTHT#readme",
   "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.12.0",
     "@types/sequelize": "^4.28.20",
     "add": "^2.0.6",
+    "bcrypt": "^5.1.1",
     "dotenv": "^16.4.7",
     "nodemon": "^3.1.9",
     "sequelize-cli": "^6.6.2",

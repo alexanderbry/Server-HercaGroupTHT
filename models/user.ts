@@ -1,5 +1,6 @@
 "use strict";
 import { Model } from "sequelize";
+import { hashPassword } from "../src/helpers/bcrypt";
 
 interface UserAttributes {
   username: string;
@@ -46,6 +47,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
     {
       sequelize,
       modelName: "User",
+      hooks: {
+        beforeCreate: (user: User) => {
+          user.password = hashPassword(user.password);
+        },
+      },
     }
   );
   return User;
