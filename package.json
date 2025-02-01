@@ -2,9 +2,9 @@
   "name": "server-hercagrouptht",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/index.ts",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "nodemon index.ts",
     "dev": "tsnd --respawn src/index.ts",
     "build": "tsc",
     "migrate": "sequelize-cli db:migrate",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/alexanderbry/Server-HercaGroupTHT#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
     "@types/node": "^22.12.0",
     "@types/sequelize": "^4.28.20",
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
     "express": "^4.21.2",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
