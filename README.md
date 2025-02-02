@@ -23,10 +23,14 @@ npm install
 ### 3. Set Up Environment Variables
 Create a `.env` file in the root directory and configure your database credentials:
 ```env
-PGUSERNAME=<your_db_username>
-PGPASSWORD=<your_db_password>
-PGDATABASE=<your_database_name>
-HOST=localhost
+DB_HOST=localhost
+DB_PORT=5432
+DB_USERNAME=<your_name>
+DB_PASSWORD=<your_password>
+DB_NAME=<your_new_database>
+PORT=3000
+NODE_ENV=development
+SECRET_KEY=helloworld
 ```
 
 ### 4. Create the Database
