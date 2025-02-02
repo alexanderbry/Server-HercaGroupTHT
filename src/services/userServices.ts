@@ -1,6 +1,6 @@
-import db from "../models/index";
-import { comparePassword } from "./helpers/bcrypt";
-import { createToken } from "./helpers/jwt";
+import db from "../../models/index";
+import { comparePassword } from "../helpers/bcrypt";
+import { createToken } from "../helpers/jwt";
 
 export class UserServices {
   static async register(payload: any): Promise<any> {

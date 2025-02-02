@@ -8,13 +8,14 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
   switch (err.name) {
     case "SequelizeValidationError":
     case "SequelizeUniqueConstraintError":
+    case "SequelizeDatabaseError":
       status = 400;
       message = err.errors[0].message;
       break;
     case "TokenExpiredError":
     case "JsonWebTokenError":
       status = 401;
-      message = "Token tidak tidak valid atau kadaluwarsa";
+      message = "Please login first";
       break;
     case "UsernameTaken":
       status = 401;
@@ -30,7 +31,7 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
       break;
     case "Unauthorized":
       status = 401;
-      message = "Token tidak tidak valid atau kadaluwarsa";
+      message = "Please login first";
       break;
     default:
       console.error(err);

@@ -15,6 +15,9 @@ module.exports = {
           key: 'id'
         }
       },
+      cargo_fee: {
+        type: Sequelize.INTEGER
+      },
       total_balance: {
         type: Sequelize.INTEGER
       },

@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { userSchema } from "../schemas/userSchema";
-import { UserServices } from "../userServices";
+import { UserServices } from "../services/userServices";
 
 class UserController {
   static async register(req: Request, res: Response, next: NextFunction): Promise<any> {

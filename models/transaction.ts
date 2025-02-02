@@ -4,6 +4,7 @@ import { Model } from "sequelize";
 interface TransactionAttributes {
   transaction_number: string;
   marketing_id: number;
+  cargo_fee: number;
   total_balance: number;
   grand_total: number;
   user_id: number;
@@ -16,6 +17,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
   {
     transaction_number!: string;
     marketing_id!: number;
+    cargo_fee!: number;
     total_balance!: number;
     grand_total!: number;
     user_id!: number;
@@ -53,6 +55,11 @@ module.exports = (sequelize: any, DataTypes: any) => {
             msg: "Marketing ID is required",
           },
         },
+      },
+      cargo_fee: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        defaultValue: 0,
       },
       total_balance: {
         type: DataTypes.INTEGER,
