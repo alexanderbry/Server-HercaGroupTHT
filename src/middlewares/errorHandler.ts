@@ -18,7 +18,7 @@ const errorHandler: ErrorRequestHandler = (err, req, res, next) => {
       message = "Please login first";
       break;
     case "UsernameTaken":
-      status = 401;
+      status = 400;
       message = "Username already exists";
       break;
     case "InvalidEmail/Password":

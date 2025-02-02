@@ -58,7 +58,7 @@ export class TransactionServices {
       });
 
       return {
-        status: 200,
+        status: 201,
         message: "Transaction has been created",
         data: null,
       };

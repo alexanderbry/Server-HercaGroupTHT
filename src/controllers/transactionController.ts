@@ -44,9 +44,8 @@ class TransactionController {
       };
 
       const data = await TransactionServices.createTransaction(payload);
-console.log(data);
 
-      return res.status(200).json({
+      return res.status(data.status).json({
         status: data.status,
         message: data.message,
         data: data.data,

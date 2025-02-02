@@ -3,7 +3,11 @@ import { userSchema } from "../schemas/userSchema";
 import { UserServices } from "../services/userServices";
 
 class UserController {
-  static async register(req: Request, res: Response, next: NextFunction): Promise<any> {
+  static async register(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
     try {
       const { error, value } = userSchema.validate(req.body);
 
@@ -18,7 +22,7 @@ class UserController {
 
       if (data.error) throw data.error;
 
-      res.status(200).json({
+      res.status(data.status).json({
         status: data.status,
         message: data.message,
         data: data.data,
@@ -27,10 +31,14 @@ class UserController {
       next(error);
     }
   }
-  static async login(req: Request, res: Response, next: NextFunction): Promise<any> {
+  static async login(
+    req: Request,
+    res: Response,
+    next: NextFunction
+  ): Promise<any> {
     try {
       const { error, value } = userSchema.validate(req.body);
-      
+
       if (error) {
         return res.status(401).json({
           status: 401,
