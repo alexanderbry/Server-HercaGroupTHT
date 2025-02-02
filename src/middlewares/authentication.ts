@@ -22,7 +22,7 @@ const authentication = async (req: AuthenticatedRequest, res: Response, next: Ne
         const user = await db.User.findByPk(data.id);
         if (!user) throw { name: 'Unauthorized' };
 
-        req.user = {
+        res.locals.loginSession = {
             id: user.id,
         };
 

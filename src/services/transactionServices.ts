@@ -24,4 +24,48 @@ export class TransactionServices {
       };
     }
   }
+
+  static async createTransaction(payload: any): Promise<any> {
+    try {
+      const { marketing_id, cargo_fee, total_balance, user_id } = payload;
+
+      const latestTransaction = await db.Transaction.findOne({
+        order: [["transaction_number", "DESC"]],
+        attributes: ["transaction_number"],
+      });
+
+      let serialNumber = 1;
+
+      if (latestTransaction) {
+        const latestNumber = latestTransaction.transaction_number.slice(3);
+        serialNumber = parseInt(latestNumber, 10) + 1;
+      }
+
+      const formattedSerial = serialNumber.toString().padStart(3, "0");
+      const transaction_number = `TRX${formattedSerial}`;
+      const grand_total = cargo_fee + total_balance;
+
+      const date = new Date().toISOString().split("T")[0];
+
+      await db.Transaction.create({
+        transaction_number,
+        marketing_id,
+        date,
+        cargo_fee,
+        total_balance,
+        grand_total,
+        user_id,
+      });
+
+      return {
+        status: 200,
+        message: "Transaction has been created",
+        data: null,
+      };
+    } catch (error) {
+      return {
+        error,
+      };
+    }
+  }
 }

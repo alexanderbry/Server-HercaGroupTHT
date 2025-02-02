@@ -1,6 +1,4 @@
-import { raw } from "express";
 import db from "../../models";
-import { log } from "node:console";
 
 export class OverviewServices {
   static async getOverview(): Promise<any> {
@@ -24,8 +22,6 @@ export class OverviewServices {
       });
 
       const commisions = transactions.reduce((acc: any, transaction: any) => {
-        const commissionRate = getCommissionRate(transaction.total_balance);
-        const commission = transaction.total_balance * commissionRate;
         const dateParts = transaction.date.split("-");
         const monthIndex = parseInt(dateParts[1], 10) - 1;
         const monthName = new Date(0, monthIndex).toLocaleString("default", {
@@ -39,13 +35,17 @@ export class OverviewServices {
         Marketing: transaction["Marketing.name"],
         Bulan: monthName,
         Omzet: 0,
-        "Komisi %": commissionRate * 100 + " %",
+        "Komisi %": 0,
         "Komisi Nominal": 0,
           };
         }
 
         acc[key].Omzet += transaction.total_balance;
-        acc[key]["Komisi Nominal"] += commission;
+        const commissionRate = getCommissionRate(acc[key].Omzet);
+        const commission = acc[key].Omzet * commissionRate;
+
+        acc[key]["Komisi %"] = commissionRate * 100 + " %";
+        acc[key]["Komisi Nominal"] = commission;
 
         return acc;
       }, {});

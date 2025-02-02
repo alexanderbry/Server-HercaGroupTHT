@@ -46,7 +46,6 @@ module.exports = (sequelize: any, DataTypes: any) => {
           notNull: {
             msg: "Transaction number is required",
           },
-          is: /^TRX-\d{3}$/,
         },
       },
       marketing_id: {
