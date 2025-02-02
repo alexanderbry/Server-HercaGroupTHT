@@ -6,11 +6,17 @@ interface MarketingAttributes {
 }
 
 module.exports = (sequelize: any, DataTypes: any) => {
-  class Marketing extends Model<MarketingAttributes> implements MarketingAttributes {
+  class Marketing
+    extends Model<MarketingAttributes>
+    implements MarketingAttributes
+  {
     id!: number;
     name!: string;
     static associate(models: any) {
-     Marketing.hasMany(models.Transaction)
+      Marketing.hasMany(models.Transaction, {
+        foreignKey: "marketing_id",
+      });
+      
     }
   }
   Marketing.init(
@@ -26,7 +32,7 @@ module.exports = (sequelize: any, DataTypes: any) => {
             msg: "Name is required",
           },
         },
-      }
+      },
     },
     {
       sequelize,

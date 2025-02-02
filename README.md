@@ -11,8 +11,8 @@ Ensure you have the following installed:
 
 ### 1. Clone the Repository
 ```sh
-git clone <repository-url>
-cd <project-folder>
+git clone https://github.com/alexanderbry/Server-HercaGroupTHT.git
+cd Server-HercaGroupTHT
 ```
 
 ### 2. Install Dependencies

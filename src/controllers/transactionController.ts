@@ -9,7 +9,6 @@ class TransactionController {
   ): Promise<any> {
     try {
       const data = await TransactionServices.getAllTransaction();
-console.log(data);
 
       res.status(200).json({
         status: data.status,

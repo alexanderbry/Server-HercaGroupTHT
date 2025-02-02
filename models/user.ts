@@ -13,7 +13,9 @@ module.exports = (sequelize: any, DataTypes: any) => {
     password!: string;
 
     static associate(models: any) {
-      User.hasMany(models.Transaction);
+      User.hasMany(models.Transaction, {
+        foreignKey: "user_id",
+      });
     }
   }
   User.init(
