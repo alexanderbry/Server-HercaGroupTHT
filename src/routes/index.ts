@@ -1,8 +1,12 @@
-import express, { Request, Response } from 'express'
-const router = express.Router()
+import { Router } from "express";
+import UserController from "../controllers/userController";
+import { error } from "console";
+import errorHandler from "../middlewares/errorHandler";
+const router = Router();
 
-router.get('/', (req: Request, res: Response) => {
-  res.send('Home page')
-})
+router.post("/register", UserController.register);
+router.post("/login", UserController.login);
 
-export default router
+router.use(errorHandler);
+
+export default router;
